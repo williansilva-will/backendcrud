@@ -43,7 +43,7 @@ namespace Crud_Core.Controllers
             }).ToList<PessoaDominio>();
             if (pessoas.Count == 0)
             {
-                return NotFound();
+                return NotFound("Dados não Encontrados.");
             }
             return Ok(pessoas);
         }
@@ -68,7 +68,7 @@ namespace Crud_Core.Controllers
 
             if (pessoa == null)
             {
-                return NotFound();
+                return NotFound("ID não Encontrado.");
             }
 
             return Ok(pessoa);
@@ -103,7 +103,7 @@ namespace Crud_Core.Controllers
             }
             else
             {
-                return NotFound();
+                return NotFound("ID não Encontrado.");
             }
             return Ok();
         }
@@ -116,9 +116,10 @@ namespace Crud_Core.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest("Dados Inválidos.");
             }
-            _context.Pessoas.Add(new PessoaDominio(){
+            _context.Pessoas.Add(new PessoaDominio()
+            {
                 ID = pessoaDominio.ID,
                 CPF = pessoaDominio.CPF,
                 Nome = pessoaDominio.Nome,
@@ -126,7 +127,7 @@ namespace Crud_Core.Controllers
                 Email = pessoaDominio.Email,
                 Sexo = pessoaDominio.Sexo,
                 DT_Nascimento = pessoaDominio.DT_Nascimento
-            });
+            }); 
 
             _context.SaveChanges();
 
@@ -140,7 +141,7 @@ namespace Crud_Core.Controllers
             var pessoaDominio = _context.Pessoas.Find(id);
             if (pessoaDominio == null)
             {
-                return NotFound();
+                return NotFound("ID não Encontrado.");
             }
 
             _context.Pessoas.Remove(pessoaDominio);

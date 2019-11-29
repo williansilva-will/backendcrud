@@ -12,7 +12,7 @@ namespace Crud_Core.Models
         [Key]
         public int ID { get; set; }
         [Required]
-        [Column(TypeName = "varchar(16)")]
+        [Column(TypeName = "varchar(11)")]
         public string CPF { get; set; }
         [Required]
         [Column(TypeName = "nvarchar(20)")]

@@ -4,14 +4,16 @@ using Crud_Core.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Crud_Core.Migrations
 {
     [DbContext(typeof(PessoaContexto))]
-    partial class PessoaContextoModelSnapshot : ModelSnapshot
+    [Migration("20191122131628_Crud_DataBase")]
+    partial class Crud_DataBase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
