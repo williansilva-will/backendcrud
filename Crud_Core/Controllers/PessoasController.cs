@@ -89,7 +89,11 @@ namespace Crud_Core.Controllers
             var PessoaExists = _context.Pessoas
                 .Where(s => s.ID == pessoaDominio.ID).FirstOrDefault<PessoaDominio>();
             
-            if(PessoaExists != null)
+            if(PessoaExists == null)
+            {
+                return NotFound("ID não Encontrado.");
+            }
+            else
             {
                 PessoaExists.ID = pessoaDominio.ID;
                 PessoaExists.CPF = pessoaDominio.CPF;
@@ -100,10 +104,6 @@ namespace Crud_Core.Controllers
                 PessoaExists.DT_Nascimento = pessoaDominio.DT_Nascimento;
 
                 _context.SaveChanges();
-            }
-            else
-            {
-                return NotFound("ID não Encontrado.");
             }
             return Ok();
         }
